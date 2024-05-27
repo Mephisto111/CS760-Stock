@@ -31,7 +31,7 @@ The sample code includes preprocessing steps for gold price data and review sent
 **6. Generate review factors** By processing the review data of each country, review factors for different countries are generated and merged.  
 
 ### Model training and prediction
-**1. Train the model and predict:** Use the MLPRegressor model to train and predict gold prices.  
+**1. Train the model and predict:** Use the MLPRegressor model to train and predict prices.  
 **2. Calculation error:** Calculate the root mean square error (RMSE), mean absolute percentage error (MAPE), and mean bias error (MBE) of the forecast results.  
 **3. Plot the error:** Plot a scatterplot of the prediction errors to observe the error distribution visually.  
 
