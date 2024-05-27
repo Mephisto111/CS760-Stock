@@ -24,11 +24,11 @@ matplotlib
 ### Data preprocessing
 The sample code includes preprocessing steps for gold price data and review sentiment data.  
 **1. Calculate technical indicators:** We generate new features by calculating the moving average (MA) and standard deviation (SD) for different days, which can help the model better capture trends and fluctuations in the data.  
-**2. Clean data：** We read the CSV file, processed the date format, converted the volume units to standard units, and removed missing values. Next, we removed some unnecessary columns from the dataset and limited the dataset to the time range of interest.  
-**3. Preprocess stock data：** Call the clean function to process the stock data and read the processed CSV file.  
+**2. Clean data** We read the CSV file, processed the date format, converted the volume units to standard units, and removed missing values. Next, we removed some unnecessary columns from the dataset and limited the dataset to the time range of interest.  
+**3. Preprocess stock data** Call the clean function to process the stock data and read the processed CSV file.  
 **4. Calculate the weighted mean, variance, skewness, and kurtosis：** To better understand the impact of review data on prices, we calculate weighted mean, variance, skewness, and kurtosis. These weighted statistics use the review's relevance score as a weight to reflect the review's importance.  
-**5. Process forum data：** We process the review data, calculate the weighted average sentiment score, number of reviews, and popularity, and aggregate these features by date.  
-**6. Generate review factors：** By processing the review data of each country, review factors for different countries are generated and merged.  
+**5. Process forum data** We process the review data, calculate the weighted average sentiment score, number of reviews, and popularity, and aggregate these features by date.  
+**6. Generate review factors** By processing the review data of each country, review factors for different countries are generated and merged.  
 
 ### Model training and prediction
 **1. Train the model and predict:** Use the MLPRegressor model to train and predict gold prices.  
