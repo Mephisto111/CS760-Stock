@@ -15,11 +15,11 @@ The code of ANN1.ipynb is designed to predict gold prices using a multi-layer mi
 
 ### Environment dependence
 Before running this project, make sure you have the following libraries installed:
-pandas
-numpy
-scikit-learn
-shap
-matplotlib
+pandas //
+numpy //
+scikit-learn //
+shap //
+matplotlib //
 
 ### Data preprocessing
 The sample code includes preprocessing steps for gold price data and review sentiment data.
