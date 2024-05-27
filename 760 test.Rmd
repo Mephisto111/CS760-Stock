@@ -1,0 +1,70 @@
+---
+title: "760 program"
+output: html_document
+date: "2024-05-12"
+---
+
+
+
+## Including Plots
+
+
+
+```{r}
+
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+
+# Assuming you've read the CSV files into data frames called e_score and c_score
+e_score <- read.csv("E_score.csv")
+c_score <- read.csv("C_score.csv")
+
+# Merge the two data frames based on the 'num' column
+merged_data <- merge(e_score, c_score, by = "num", suffixes = c("_eng", "_chi"))
+
+# Calculate the absolute difference in sentiment scores
+merged_data$sentiment_diff <- abs(merged_data$Sentiment.score_eng - merged_data$Sentiment.score_chi)
+
+# Create bins for the sentiment score differences
+merged_data$sentiment_diff_bin <- cut(merged_data$sentiment_diff, breaks=seq(from=0, to=max(merged_data$sentiment_diff), by=30), include.lowest=TRUE, right=FALSE)
+
+# Plotting the data
+ggplot(merged_data, aes(x=sentiment_diff_bin)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(title="Distribution of Absolute Sentiment Score Differences between English and Chinese",
+       x="Absolute Sentiment Score Difference",
+       y="Frequency") +
+  theme(axis.text.x = element_text(angle=45, hjust=1))  # Rotate x labels for better readability
+
+
+merged_data$Relat_diff <- abs(merged_data$Relatedness_eng - merged_data$Relatedness_chi)
+merged_data$Relat_diff_bin <- cut(merged_data$Relat_diff, breaks=seq(from=0, to=max(merged_data$Relat_diff), by=15), include.lowest=TRUE, right=FALSE)
+
+ggplot(merged_data, aes(x=Relat_diff_bin)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(title="Distribution of Absolute Sentiment Score Differences between English and Chinese",
+       x="Relatedness Score Difference",
+       y="Frequency") +
+  theme(axis.text.x = element_text(angle=45, hjust=1))  # Rotate x labels for better readability
+
+
+
+# 对于情感分数差异的计数
+sentiment_diff_counts <- merged_data %>%
+  count(sentiment_diff_bin)
+
+# 输出情感分数差异的计数结果
+print(sentiment_diff_counts)
+
+# 对于相关性差异的计数
+relatedness_diff_counts <- merged_data %>%
+  count(Relat_diff_bin)
+
+# 输出相关性差异的计数结果
+print(relatedness_diff_counts)
+```
+
+
